@@ -1,0 +1,32 @@
+.pagewrapper {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: 50px auto 50px;
+	height: 100vh;
+	height: 100dvh;
+}
+
+.header {
+	grid-column: 1 / 13;
+	grid-row: 1;
+	background-color: red;
+}
+
+.main {
+	grid-column: 1 / 13;
+	grid-row: 2;
+	display: flex;
+	justify-content: center;
+}
+
+.footer {
+	grid-column: 1 / 13;
+	grid-row: 3;
+	background-color: purple;
+	text-align: center;
+}
+
+.infoform {
+	width: 50%;
+	background-color: gray;
+}
