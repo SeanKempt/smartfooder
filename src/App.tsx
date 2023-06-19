@@ -1,5 +1,6 @@
 import './styles/index.css';
 import InfoForm from './components/InfoForm';
+import CardContainer from './components/CardContainer';
 import { useState, ChangeEvent } from 'react';
 
 export interface FoodInfo {
@@ -54,7 +55,7 @@ const App = () => {
 	return (
 		<div className="pagewrapper">
 			<header className="header">
-				<h1>SmartFooder</h1>
+				<h1 className="text-3xl font-bold underline">SmartFooder</h1>
 			</header>
 			<main className="main">
 				<InfoForm
@@ -64,6 +65,7 @@ const App = () => {
 					handleCarbsInputChange={handleCarbsInputChange}
 					handleFatInputChange={handleFatInputChange}
 				/>
+				<CardContainer />
 			</main>
 			<footer className="footer">
 				<p>Created by Sean Kempt</p>

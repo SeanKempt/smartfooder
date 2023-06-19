@@ -39,22 +39,34 @@ const InfoForm = ({
 	} else {
 		additionalInfo = (
 			<div>
-				<label htmlFor="protein">Protein</label>
-				<input
-					type="text"
-					id="protein"
-					value={userFoodInfo.protein}
-					onChange={handleProteinInputChange}
-				/>
-				<label htmlFor="carbs">Carbs</label>
-				<input
-					type="text"
-					id="carbs"
-					value={userFoodInfo.carbs}
-					onChange={handleCarbsInputChange}
-				/>
-				<label htmlFor="fat">Fat</label>
-				<input type="text" id="fat" />
+				<div className="infoform__form--forminput flex flex-col p-2 w-96">
+					<label htmlFor="protein" className="text-center">
+						Protein
+					</label>
+					<input
+						type="text"
+						id="protein"
+						value={userFoodInfo.protein}
+						onChange={handleProteinInputChange}
+					/>
+				</div>
+				<div className="infoform__form--forminput flex flex-col p-2 w-96">
+					<label htmlFor="carbs" className="text-center">
+						Carbs
+					</label>
+					<input
+						type="text"
+						id="carbs"
+						value={userFoodInfo.carbs}
+						onChange={handleCarbsInputChange}
+					/>
+				</div>
+				<div className="infoform__form--forminput flex flex-col p-2 w-96">
+					<label htmlFor="fat" className="text-center">
+						Fat
+					</label>
+					<input type="text" id="fat" />
+				</div>
 			</div>
 		);
 		advancedButton = (
@@ -65,10 +77,18 @@ const InfoForm = ({
 	}
 
 	return (
-		<div className="infoform">
-			<form>
-				<label htmlFor="calories">Enter your calories</label>
-				<input type="text" id="calories" onChange={handleCaloriesInputChange} />
+		<div className="infoform self-center p-2 my-2">
+			<form className="infoform__form items-center flex flex-col">
+				<div className="infoform__form--forminput flex flex-col p-2 w-96">
+					<label htmlFor="calories" className="text-center">
+						Enter your calories
+					</label>
+					<input
+						type="text"
+						id="calories"
+						onChange={handleCaloriesInputChange}
+					/>
+				</div>
 				{additionalInfo}
 				{advancedButton}
 			</form>
