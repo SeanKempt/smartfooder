@@ -3,6 +3,7 @@ import { FoodInfo, Handlers } from '../App';
 
 interface InfoFormProps {
 	userFoodInfo: FoodInfo;
+	filterFoodItemsByCalorie: (calorie: string) => void;
 	handleCaloriesInputChange: Handlers['handleCaloriesInputChange'];
 	handleProteinInputChange: Handlers['handleProteinInputChange'];
 	handleCarbsInputChange: Handlers['handleCarbsInputChange'];
@@ -14,6 +15,7 @@ const InfoForm = ({
 	handleCaloriesInputChange,
 	handleProteinInputChange,
 	handleCarbsInputChange,
+	filterFoodItemsByCalorie,
 }: InfoFormProps) => {
 	const [advOptions, setAdvOptions] = useState(false);
 
@@ -86,7 +88,10 @@ const InfoForm = ({
 					<input
 						type="text"
 						id="calories"
-						onChange={handleCaloriesInputChange}
+						onChange={(e) => {
+							handleCaloriesInputChange(e);
+							filterFoodItemsByCalorie(e.target.value);
+						}}
 					/>
 				</div>
 				{additionalInfo}
