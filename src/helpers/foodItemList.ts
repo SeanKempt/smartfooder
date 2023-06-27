@@ -5,7 +5,8 @@ export const foodItemList: FoodItem[] = [
 	{ name: 'hotdog', calories: 400, protein: 80, carbs: 5, fat: 5 },
 ];
 
-const getFoodData = async (foodname: string, calories: number) => {
+const getFoodData = async (foodname: string, calories: string) => {
+	const newCal = Number(calories);
 	const response = await fetch(
 		`https://trackapi.nutritionix.com/v2/search/instant`,
 		{
@@ -21,14 +22,33 @@ const getFoodData = async (foodname: string, calories: number) => {
 				detailed: true,
 				full_nutrients: {
 					'208': {
-						lte: calories,
+						lte: newCal,
 					},
 				},
 			}),
 		}
 	);
 	const jsonData = await response.json();
-	console.log(jsonData);
+	return jsonData;
 };
 
-await getFoodData('mcdonalds', 500);
+export interface BrandedItemList {
+	brand_name: string;
+	brand_item_name: string;
+	item_calories: number;
+}
+
+// Pulls data from API that is needed for the FoodCard componenent.
+// Puts the data into an array. Only grabbing data that would be needed to be used within the app.
+const extractApiData = async (foodName: string, calories: string) => {
+	const foodData = await getFoodData(foodName, calories);
+	const brandedFoodItemList = foodData.branded;
+	const newBrandedFoodItemList: BrandedItemList[] = [];
+	brandedFoodItemList.map((item: any) => {
+		return newBrandedFoodItemList.push({brand_name: item.brand_name, brand_item_name: item.brand_name_item_name, item_calories: item.nf_calories });
+	});
+	return newBrandedFoodItemList;
+};
+
+export const testArrayThingy = await extractApiData('burger king', '1000');
+console.log(testArrayThingy);

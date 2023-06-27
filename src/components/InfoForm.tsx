@@ -96,6 +96,7 @@ const InfoForm = ({
 				</div>
 				{additionalInfo}
 				{advancedButton}
+				<button type='button' onClick={() => {console.log('hello world')}}>Find food</button>
 			</form>
 		</div>
 	);
